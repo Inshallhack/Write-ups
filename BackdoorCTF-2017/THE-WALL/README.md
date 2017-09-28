@@ -168,4 +168,4 @@ On envoi donc notre combinaison nom d'utilisateur et mot de passe:
 ```
 Bim ! On a le flag qui s'affiche et on gagne 100 points.
 
-![Snow](images/snow.jpeg)
+-> ![Snow](images/snow.jpeg) <-
