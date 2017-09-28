@@ -167,3 +167,5 @@ On envoi donc notre combinaison nom d'utilisateur et mot de passe:
     http://163.172.176.29/WALL/index.php?soul=QNKCDZO&life=LordCommander
 ```
 Bim ! On a le flag qui s'affiche et on gagne 100 points.
+
+![Snow](/images/snow.jpeg)
