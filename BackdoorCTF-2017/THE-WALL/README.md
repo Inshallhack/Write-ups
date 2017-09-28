@@ -10,6 +10,10 @@ http://163.172.176.29/WALL
 Write up
 -------
 
+<p align="center">
+<img src="https://github.com/Inshallhack/Write-ups/blob/master/BackdoorCTF-2017/THE-WALL/images/snow.jpeg">
+</p>
+
 Dans un premier temps en cliquant sur le lien on arrive sur la page http://163.172.176.29/WALL/login.html
 
 On va commencer par regarder le code source de la page voir s'il n'y a pas d'indices:
@@ -167,6 +171,7 @@ On envoi donc notre combinaison nom d'utilisateur et mot de passe:
     http://163.172.176.29/WALL/index.php?soul=QNKCDZO&life=LordCommander
 ```
 Bim ! On a le flag qui s'affiche et on gagne 100 points.
+
 <p align="center">
-<img src="https://github.com/Inshallhack/Write-ups/blob/master/BackdoorCTF-2017/THE-WALL/images/snow.jpeg">
+<img src="https://github.com/Inshallhack/Write-ups/blob/master/BackdoorCTF-2017/THE-WALL/images/dead knight.gif">
 </p>
