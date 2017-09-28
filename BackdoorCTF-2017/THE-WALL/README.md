@@ -168,5 +168,5 @@ On envoi donc notre combinaison nom d'utilisateur et mot de passe:
 ```
 Bim ! On a le flag qui s'affiche et on gagne 100 points.
 <p align="center">
-![Snow](images/snow.jpeg)
+<img src="https://github.com/Inshallhack/Write-ups/blob/master/BackdoorCTF-2017/THE-WALL/images/snow.jpeg">
 </p>
