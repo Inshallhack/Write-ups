@@ -1,4 +1,4 @@
 Espace Commun
 ----------
 
-Ici vous retrouverez différentes choses utiles pour vos ctfs comme des scripts, des liens, des tutoriels, etc.
+Ici vous retrouverez différentes choses utiles en rapport avec les Write Ups.
