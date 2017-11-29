@@ -16,11 +16,11 @@ Write up
 
 Explications sur la résolution du challenge avec des exemples de code si besoin.
 
-Pour du code:
-
-langage```
-votre code
- ```
-
 
 ```
+
+Pour de l'aide lors de la création Markdown, je vous invite à visiter le lien:
+
+https://guides.github.com/features/mastering-markdown/
+
+Enjoy !
