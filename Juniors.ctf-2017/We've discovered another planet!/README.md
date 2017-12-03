@@ -1,7 +1,7 @@
 We've discovered another planet!
 -------
 
-**Category**: Stégano **Points**: 100:
+**Category**: Reverse **Points**: 100:
 
 > A day on this planet lasts 42 hours, can you wait for the sunset?
 
