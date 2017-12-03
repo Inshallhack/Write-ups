@@ -1,7 +1,7 @@
 Sweet Dreams
 -------
 
-**Category**: La catégorie **Points**: 100:
+**Category**: Stégano **Points**: 100:
 
 > Do you also want to see what is below? 
 
