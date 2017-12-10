@@ -172,7 +172,7 @@ tcp6       0      0 :::22                   :::*                    LISTEN
 tcp6       0      0 ::1:25                  :::*                    LISTEN     
 ```
 
-Hm… A service is running locally on port 25, which is common for **SMTP**. The description of the challenge **did** say that the root would reply with the flag to my mail address if I sent him a flag with the subject *give me flag*.
+Hm… A service is running locally on port 25, which is common for **SMTP**. The description of the challenge **did** say that the root would reply with the flag to my mail address if I sent him an email with the subject *give me flag*.
 
 Coincidentally, this also reminded me of this [presentation](https://www.blackhat.com/docs/us-17/thursday/us-17-Tsai-A-New-Era-Of-SSRF-Exploiting-URL-Parser-In-Trending-Programming-Languages.pdf) at **BlackHat USA 2017** (*TL;DR `wget` is vulnerable to CRLF injections*).
 
