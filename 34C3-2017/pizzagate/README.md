@@ -39,7 +39,7 @@ I immediately try to access the page using an invalid HTTP verb. This allows me 
 
 Tough luck. Guess I'm going to have to actually authenticate in some way. I try a few common injections, and notice that when using `"` as the username, the **WWW-Authenticate response header** is different than usual: it goes from `WWW-Authenticate: Basic realm=devs_only err=You provided invalid credentials.` to `WWW-Authenticate: Basic realm=devs_only err=Unexpected Exception: Invalid predicate`. Seems like I broke something.
 
-I quite assume that the server-side query looks something like `username="<username>" AND password="<password>"`. I therefore craft the following payload in the username field: `" or 1=1 or "1"="1`. Notice the second condition, that can pretty much return any valid expression; while it can be anything, it is still required as **AND** has a higher precedence than **OR** (if **AND** is **×** and **OR** is **+**, **0 + 1 * 0 = 0**, while **0 + 1 + x * 0 = 1**).
+I quickly assume that the server-side query looks something like `username="<username>" AND password="<password>"`. I therefore craft the following payload in the username field: `" or 1=1 or "1"="1`. Notice the second condition, that can pretty much return any valid expression; while it can be anything, it is still required as **AND** has a higher precedence than **OR** (if **AND** is **×** and **OR** is **+**, **0 + 1 * 0 = 0**, while **0 + 1 + x * 0 = 1**).
 
 The injection works, but I am still met with a rather explicit error: `WWW-Authenticate: Basic realm=devs_only err=Your username is 'bernd' and your role is 'inactive', but 'admin' role required.`. Well, let's just fix the payload, which becomes `" or role="admin" or "1"="1`. Aaaand, I'm in!
 
@@ -136,7 +136,7 @@ It works, and the content of **/etc/passwd** is displayed on the page! At this p
 flagisinrootinthefileflag:x:1000:1000::/home/flagisinrootinthefileflag:
 ```
 
-I modify the request to get `/flag` instead of `/etc/passwd`, and voila!
+I modify the request to get `/flag` instead of `/etc/passwd`, and voilà!
 
 **Flag: 34C3_congratZ_you_know_owasp_and_are_in_the_illumi4nti**
 
