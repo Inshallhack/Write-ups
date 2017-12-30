@@ -75,7 +75,7 @@ Invalid value 'admin' for user role. Only 'user' and 'dev' supported.
 
 Okay, that's straightforward. Let's create a dev account!
 
-![Available pizzas](./available-pizzas.png)
+![Available pizzas](./available-pizza-list.png)
 
 Now, I can create custom pizzas. Let's try to create one named **Pizza itanimullI** as described in the comment from the menu page. However, we get the following response:
 ```
