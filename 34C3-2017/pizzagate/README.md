@@ -14,7 +14,7 @@ Grab your OWASP Top 10 list and investigate! We need to find out what's going on
 
 ## Under construction
 
-Upon clicking on the link, we stumble upon the following page:
+Upon clicking on the link, I stumble upon the following page:
 
 ![Under construction](./underconstruction.png)
 
@@ -27,7 +27,7 @@ The source of the page contains this comment:
 
 ![Django debug](./djangodebug.png)
 
-Luckily this yields results right away in the shape of a *Django debug page*. Naturally, we to access `/admin` right away, but it just redirects to `/`. Well, that was worth a try… `/robots.txt` doesn't contain any useful information, and the same goes for `/static`. `/foobarbaz`, however, demands that we authenticate as it leads to a **devs_only** zone.
+Luckily this yields results right away in the shape of a *Django debug page*. Naturally, I try to access `/admin` right away, but it just redirects to `/`. Well, that was worth a try… `/robots.txt` doesn't contain any useful information, and the same goes for `/static`. `/foobarbaz`, however, demands that I authenticate as it leads to a **devs_only** zone.
 
 ![Dev realm](./devrealm.png)
 
@@ -77,7 +77,7 @@ Okay, that's straightforward. Let's create a dev account!
 
 ![Available pizzas](./available-pizza-list.png)
 
-Now, I can create custom pizzas. Let's try to create one named **Pizza itanimullI** as described in the comment from the menu page. However, we get the following response:
+Now, I can create custom pizzas. Let's try to create one named **Pizza itanimullI** as described in the comment from the menu page. However, I get the following response:
 ```
 A pizza with that name exists already!
 ```
