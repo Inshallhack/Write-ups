@@ -26,13 +26,16 @@ Now i try to see what is the char not in UTF8 encode:
 > <?php
 echo utf8_decode("nеv3r_7h15_3z");
 
+
 The result was:
 
 > n?v3r_7h15_3z
 
+
 Replace ? with e and flag.
 
 > tpctf{nev3r_7h15_3z}
+
 
 <p align="center">
 <img src="http://mfs0.bp.cdnsw.com/fs/Root/normal/fsqc-Bob_l_eponge_heureux.jpg">
