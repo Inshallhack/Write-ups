@@ -23,8 +23,10 @@ In the title we have one clue "latin".
 
 Now i try to see what is the char not in UTF8 encode:
 
-``` <?php
+``` 
+<?php
 echo utf8_decode("nеv3r_7h15_3z");
+```
 
 
 
