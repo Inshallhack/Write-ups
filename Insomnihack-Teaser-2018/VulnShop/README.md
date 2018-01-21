@@ -1,6 +1,6 @@
 # VulnShop
 
-VulnShop was a web challenge in the Insomnihack 2018 teaser. It was solved by [SIben](https://twitter.com/_SIben_), nodauf and [Geluchat](https://twitter.com/Geluchat) for Inshall'hack. While it ended up being the most flagged challenge of the CTF (apart from the warmup, of course), it was an interesting lesson.
+VulnShop was a web challenge in the Insomnihack 2018 teaser. It was solved by [SIben](https://twitter.com/_SIben_), nodauf and [Geluchat](https://twitter.com/Geluchat) (*khack40*) for Inshall'hack. While it ended up being the most flagged challenge of the CTF (apart from the warmup, of course), it was an interesting lesson.
 
 ## Challenge description
 
