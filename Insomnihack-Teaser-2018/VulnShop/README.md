@@ -113,7 +113,7 @@ The source code was the following:
 
 ## Angles of attack
 
-Ugh. Lots of different options page options. Two lines catch the eye immediately though:
+Ugh. Lots of different page options. Two lines catch the eye immediately though:
 ```php
 $_REQUEST['method']("./".$_SESSION['challenge'], $_REQUEST['answer']);
 ```
