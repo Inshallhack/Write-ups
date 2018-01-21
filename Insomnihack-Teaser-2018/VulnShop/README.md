@@ -129,7 +129,7 @@ The **phpinfo()** information tells us that the exec-like functions are disabled
 The file `./".$_SESSION['challenge']` must be created first of course, which is done by first visiting the **contactus** page (`$_SESSION['challenge'] = rand(100000,999999);`) followed by the **captcha** page (`touch($_SESSION['challenge']);`).
 
 However, the following line is executed at the beginning of the program:
-```
+```php
 $_REQUEST = array_map("strip_tags", $_REQUEST);
 ```
 
