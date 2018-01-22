@@ -13,5 +13,4 @@ Link to submit: https://felicity.iiit.ac.in/contest/breakin/findingwill/index.ht
 Write up
 -------
 
-TODO
 
