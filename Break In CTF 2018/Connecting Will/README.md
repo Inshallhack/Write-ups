@@ -13,7 +13,7 @@ Link to submit: https://felicity.iiit.ac.in/contest/breakin/findingwill/index.ht
 Write up
 -------
 
-This challenge was the second of the CTF (They said Misc but it's web), flagged at the same time by SIben and Shrewk.
+This challenge was the second of the CTF (They said Misc but it's web), flagged at the same time by **SIben** and **Shrewk** (~~Team SS~~).
 
 <p align="center">
 <img src="https://thumbs.gfycat.com/ChillyMadAfricangoldencat-max-1mb.gif">
@@ -72,7 +72,7 @@ It's easy we need to find one value (or more) with md5 hash which begin with AE 
 <img src="https://media.tenor.com/images/84dbf692a249261cf1df2074298e02dc/tenor.gif">
 </p>
 
-To make easy script i used Powershell:
+To brute force this shit, i used Powershell because it's easy like ~~daddy in mommy~~:
 
 ```
 $i=0
