@@ -67,10 +67,31 @@ It's easy we need to find one value (or more) with md5 hash which begin with AE 
 To make easy script i used Powershell:
 
 ```
-
+$i=0
+$count = 0
+while($i -lt 1000000000 -and $count -lt 2 )
+{
+    $md5 = new-object -TypeName System.Security.Cryptography.MD5CryptoServiceProvider
+    $utf8 = new-object -TypeName System.Text.UTF8Encoding
+    $hash = [System.BitConverter]::ToString($md5.ComputeHash($utf8.GetBytes($i)))
+    $hash = $hash.replace("-", "")
+    if($hash -like "AE*" -OR $hash -like "0E" -and $hash.substring(2) -notmatch "[EF]" )
+    {
+        
+        write-host -f cyan "Nombre:" $i
+        write-host -f Magenta "Hash:" $hash
+        write-host "`r`n"
+        ++$count
+    }
+    ++$i
+}
 ```
 
-I've found to result:
+I've found two result:
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/Inshallhack/Write-ups/master/Break%20In%20CTF%202018/Connecting%20Will/resultat.PNG">
+</p>
 
 Try results and FLAGGED !!!
 
