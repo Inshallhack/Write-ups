@@ -13,11 +13,15 @@ Link to submit: https://felicity.iiit.ac.in/contest/breakin/findingwill/index.ht
 Write up
 -------
 
-This challenge was the second of the CTF, flagged at the same time by SIben and Shrewk.
+This challenge was the second of the CTF (They said Misc but it's web), flagged at the same time by SIben and Shrewk.
+
+<p align="center">
+<img src="https://thumbs.gfycat.com/ChillyMadAfricangoldencat-max-1mb.gif">
+</p>
 
 Before the begin of this chall we can read the source code and hint.
 
-Now we know a lot of things:
+**Now we know a lot of things:**
 
  - We need to use 2 parameters
 
@@ -60,9 +64,13 @@ if ($hash1 != $hash2) {
         }
 ```
 
-Let's go to flag this shit !
+**Let's go to flag this shit !**
 
-It's easy we need to find one value (or more) with md5 hash which begin with AE and not contain E and F.
+It's easy we need to find one value (or more) with md5 hash which begin with AE and not contain E and F, and the conversion allows us to use magic trick.
+
+<p align="center">
+<img src="https://media.tenor.com/images/84dbf692a249261cf1df2074298e02dc/tenor.gif">
+</p>
 
 To make easy script i used Powershell:
 
@@ -87,13 +95,19 @@ while($i -lt 1000000000 -and $count -lt 2 )
 }
 ```
 
-I've found two result:
+I've found two results:
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/Inshallhack/Write-ups/master/Break%20In%20CTF%202018/Connecting%20Will/resultat.PNG">
 </p>
 
-Try results and FLAGGED !!!
+Try results...
+
+**FLAGGED !!!**
+
+<p align="center">
+<img src="https://media.giphy.com/media/4AZ7jvyD54AFO/giphy.gif">
+</p>
 
 ```
 Success. The flag is BREAKIN{I_Will_Connect}
