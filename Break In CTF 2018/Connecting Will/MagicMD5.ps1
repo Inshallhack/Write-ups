@@ -7,7 +7,7 @@ while($i -lt 1000000000 -and $count -lt 2 )
     $utf8 = new-object -TypeName System.Text.UTF8Encoding
     $hash = [System.BitConverter]::ToString($md5.ComputeHash($utf8.GetBytes($i)))
     $hash = $hash.replace("-", "")
-    if($hash -notmatch "F" -and $hash -like "AE*" -OR $hash -like "0E" -and $hash.substring(2) -notmatch "E" )
+    if($hash -like "AE*" -OR $hash -like "0E" -and $hash.substring(2) -notmatch "[EF]" )
     {
         
         write-host -f cyan "Nombre:" $i
