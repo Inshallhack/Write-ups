@@ -117,7 +117,7 @@ Sounds easy enough, let's flag this!
 We need to find one or more value(s) whose MD5 hash starts with **ae** and does
 not contain any **e** or **f** past the second character. All of these hashes
 will evaluate as different during the first comparison, but be transformed
-to magic hashes when the conversion between the two checks occurs.
+into magic hashes when the conversion between the two checks occurs.
 
 <p align="center">
 <img src="https://media.tenor.com/images/84dbf692a249261cf1df2074298e02dc/tenor.gif">
