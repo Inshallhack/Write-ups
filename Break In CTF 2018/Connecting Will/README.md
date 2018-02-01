@@ -68,7 +68,7 @@ things**:
 
 - two parameters `hash1` and `hash2` passed in our request are used;
 
-```
+```php
     $first = $_POST['val1'];
     $second = $_POST['val2'];
 ```
@@ -96,7 +96,7 @@ if ($hash1 != $hash2) {
 - characters *a*, *b*, *c* and *d* are respectively transformed into *0*, *1*,
 *2* and *3*;
 
-```
+```php
     $hash1 = strtr($hash1, "abcd", "0123");
     $hash2 = strtr($hash2, "abcd", "0123");
 ```
