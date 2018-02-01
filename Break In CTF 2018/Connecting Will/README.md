@@ -13,66 +13,121 @@ Link to submit: https://felicity.iiit.ac.in/contest/breakin/findingwill/index.ht
 Write up
 -------
 
-This challenge was the second of the CTF (They said Misc but it's web), flagged at the same time by **SIben** and **Shrewk** (~~Team SS~~).
+**Connecting Will** was the second challenge of the CTF (the challenge was
+tagged as Misc but should be tagged Web), flagged simultaneously by
+**SIben** and **Shrewk**.
 
 <p align="center">
 <img src="https://thumbs.gfycat.com/ChillyMadAfricangoldencat-max-1mb.gif">
 </p>
 
-Before the begin of this chall we can read the source code and hint.
+## Source code
 
-**Now we know a lot of things:**
+The provided source code is the following:
 
- - We need to use 2 parameters
+```php
+<?php
+/**
+ * Find hashes which match
+*/
+if (!array_key_exists('val1', $_POST) || !array_key_exists('val2', $_POST)) {
+    echo "Please send the inputs correctly\n";
+    exit(0);
+}
 
- ```
+$first = $_POST['val1'];
+$second = $_POST['val2'];
+
+if (!(is_numeric($first) || is_numeric($second))) {
+    echo "Invalid input\n";
+    exit(0);
+}
+
+$hash1 = hash('md5', $first, false);
+$hash2 = hash('md5', $second, false);
+
+if ($hash1 != $hash2) {
+    $hash1 = strtr($hash1, "abcd", "0123");
+    $hash2 = strtr($hash2, "abcd", "0123");
+    if ($hash1 == $hash2) {
+        // Flag will be echoed here.
+    } else {
+        echo "Hard luck :(\nKeep trying\n";
+    }
+} else {
+    echo "Hard luck :(\nKeep trying\n";
+}
+
+?>
+```
+
+## Code analysis
+
+The code is fairly straightforward, and its analysis teaches us **lots of
+things**:
+
+- two parameters `hash1` and `hash2` passed in our request are used;
+
+```
     $first = $_POST['val1'];
     $second = $_POST['val2'];
- ```
+```
 
- - One param need to be numeric
+- at least one of them has to be a number;
 
- ```
+```php
  if (!(is_numeric($first) || is_numeric($second)))
- ```
+```
 
- - Vars are hashed in md5 (So with hint we know "Magic Hashes" is the solve)
+- both parameters are hashed using MD5 (coupled with the provided hint, this
+clearly hints at [magic hashes](https://www.whitehatsec.com/blog/magic-hashes/));
 
- ```
+```php
     $hash1 = hash('md5', $first, false);
     $hash2 = hash('md5', $second, false);
 ```
 
-- First hash1 can't be equal to hash2 (We can't use magic hash for moment)
+- `hash1` has to be different of `hash2`;
 
-```
+```php
 if ($hash1 != $hash2) {
 ```
 
-- chars abcd are converted into 0123
+- characters *a*, *b*, *c* and *d* are respectively transformed into *0*, *1*,
+*2* and *3*;
 
 ```
     $hash1 = strtr($hash1, "abcd", "0123");
     $hash2 = strtr($hash2, "abcd", "0123");
 ```
 
-- Finally to flag hash1 need to be equal to hash2 -_-
+- after this step and in order to obtain the flag, *hash1* has to evaluate as
+equal to *hash2*;
 
-```
+```php
         if ($hash1 == $hash2) {
         // Flag will be echoed here.
         }
 ```
 
-**Let's go to flag this shit !**
+Sounds easy enough, let's flag this!
 
-It's easy we need to find one value (or more) with md5 hash which begin with AE and not contain E and F, and the conversion allows us to use magic trick.
+## Exploitation
+
+We need to find one or more value(s) whose MD5 hash starts with **ae** and does
+not contain any **e** or **f** past the second character. All of these hashes
+will evaluate as different during the first comparison, but be transformed
+to magic hashes when the conversion between the two checks occurs.
 
 <p align="center">
 <img src="https://media.tenor.com/images/84dbf692a249261cf1df2074298e02dc/tenor.gif">
 </p>
 
-To brute force this shit, i used Powershell because it's easy like ~~daddy in mommy~~:
+A quick calculation tells us that this pattern should occur on average every
+1/16 × 1/16 × (14/16)^30 = **~14060** hashes. This can easily be bruteforced.
+
+I implemented my bruteforcing algorithm using Powershell, because I'm lazy and
+it is very easy to use:
 
 ```
 $i=0
@@ -95,13 +150,13 @@ while($i -lt 1000000000 -and $count -lt 2 )
 }
 ```
 
-I've found two results:
+… Aaaand, I found two results!
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/Inshallhack/Write-ups/master/Break%20In%20CTF%202018/Connecting%20Will/resultat.PNG">
 </p>
 
-Try results...
+Let's try them…
 
 **FLAGGED !!!**
 
@@ -112,5 +167,3 @@ Try results...
 ```
 Success. The flag is BREAKIN{I_Will_Connect}
 ```
-
-
