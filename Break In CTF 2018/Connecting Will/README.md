@@ -87,7 +87,7 @@ clearly hints at [magic hashes](https://www.whitehatsec.com/blog/magic-hashes/))
     $hash2 = hash('md5', $second, false);
 ```
 
-- `hash1` has to be different of `hash2`;
+- `hash1` has to be different from `hash2`;
 
 ```php
 if ($hash1 != $hash2) {
