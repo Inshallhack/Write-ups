@@ -1,8 +1,8 @@
 # OldSchool-NewAge
 
-- **Category :** pwn
-- **Points :** 75
-- **Challenge Description :**
+- **Category:** pwn
+- **Points:** 75
+- **Challenge Description:**
 ```
 It all started with a leak bang
 ```
