@@ -1,15 +1,24 @@
 # Barnamak
 
-- **Category :** reverse
-- **Points :** 200
-- **Description :**
+- **Category:** reverse
+- **Points:** 200
+- **Description:**
 ```
 Run the application and capture the flag!
 ```
 
 # Writeup
-The application is an Android apk file, so we can easily decompile it. We used http://www.javadecompilers.com/apk for this job. Just in case we miss anything we also decompiled the apk using apktool.
-At first glance the apk doesn't seem to have a lot of code, and no native libraries which is a good sign and will make our work easier. The first things to look for are obvious encryption attempts such as unusual strings, or raw byte arrays. In the file ChallengeFragment.java we stumble upon three pretty promising function :
+
+The application is an apk file, meaning we can easily decompile it. We use
+[http://www.javadecompilers.com/apk](http://www.javadecompilers.com/apk) for
+this job. To avoid missing anything, we also decompile the apk using `apktool`.
+
+At first glance the apk doesn't seem to contain a lot of code, and does not
+contain any native library, which is a good sign and will make our work easier.
+
+The first elements to look out for are obvious encryption attempts such as
+**unusual strings**, or **raw byte arrays**. In the file
+`ChallengeFragment.java`, we stumble upon three pretty promising functions:
 
 ```java
     class C02611 implements OnClickListener {
@@ -60,15 +69,24 @@ At first glance the apk doesn't seem to have a lot of code, and no native librar
         return output;
     }
 
-
 ```
 
-The first one seems to decrypt an array using the third function, and using as a key the current device latitude (casted to int then string). Interestingly the second function seems to do comparisons on latitude and longitude. To make the second function return true we need to have a latitude of 0x2C + 0x1 = 45 and a longitude of -0x5b - 0x2 = -93. Now that we have what we suppose are the correct locations we can decrypt the array in the first function using our latitude (43).
-We get the string : "Flag is MD5 Of Longtiude"
-Our key is an int converted to string, so we just have to do : 
+The first function seems to decrypt an array using the third one, and using
+the current latitude (casted to `int` and then to `String`) as a key.
+
+Interestingly, the second function seems to make comparisons based on
+**latitude and longitude**. In order for this function to return `true`, we
+need to have a latitude of **0x2C + 0x1 = 45** and a longitude of
+**-0x5b - 0x2 = -93**. Now that we have what we suppose are the right
+coordinates, we can decrypt the array from the first function using the
+latitude we found.
+
+We get the following string: `"Flag is MD5 Of Longtiude"`
+
+Our key being an `int` converted to a `string`, we just have to do the following: 
 ```
 $ echo -ne "-93" | md5sum
 87a20a335768a82441478f655afd95fe  -
 ```
 
-And the flag is : **SharifCTF{87a20a335768a82441478f655afd95fe}**
+And the flag is: **SharifCTF{87a20a335768a82441478f655afd95fe}**
