@@ -9,16 +9,20 @@ It all started with a leak bang
 
 ## Writeup
 
-We are being provided with a tar file containing two files, an executable and a libc. Let's first run file on them :
+We are provided with a tar archive that contains two files: an executable and
+a shared object of a libc. Let's first run file on them :
 
-```
+```bash
 $ file vuln4 libc.so.6
 vuln4:     ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked
 libc.so.6: ELF 32-bit LSB shared object, Intel 80386, version 1 (GNU/Linux), dynamically linked
 ```
 
-We can start to guess that this challenge will have to do with leaking stuff from libc (thanks to the presence of the library and the hint in the challenge description).
+We can start assuming that this challenge will have to do with leaking stuff
+from libc (thanks to the presence of the library and the hint in the challenge
+description).
 Let's first take a look at the main function of the program with r2 :
+
 ```
    sym.main ();
 │           ; var int local_3ah @ ebp-0x3a
@@ -68,7 +72,9 @@ Let's first take a look at the main function of the program with r2 :
 └           0x08048571      c3             ret
 ```
 
-So we have a fgets reading 0xc8 characters into a stack allocated buffer, and this buffer is then copied with the copy_it function to another buffer in memory. Let's take a look at copy_it.
+So we have a call to `fgets` to read 0xc8 characters into a stack-allocated
+buffer, which is then copied to another buffer using the `copy_it` function.
+Let's have a look at it:
 
 ```
 │   sym.copy_it ();
@@ -88,30 +94,42 @@ So we have a fgets reading 0xc8 characters into a stack allocated buffer, and th
 └           0x080484e9      c3             ret
 ```
 
-The copy function uses strcpy, which means that it doesn't take into account the string length during the copy, and since we are calling it with pointers to stack allocated buffers things will get nasty.
-If we try to input a large number of chars we get a segfault, and eip control, so we need to build a strategy to exploit this.
+`copy_it` uses `strcpy`, which means that it doesn't take into account the
+length of the string during the copy; since we are calling it with pointers to
+stack-allocated buffers things are going to get nasty.
+If we try to input a large number of chars, we get a segmentation fault and
+the control of EIP. We need to build a strategy to exploit this.
 
 What we know:
-- The binary has ASLR enabled
-- The binary has the NX bit enabled
-- The call convention has the arguments on the stack
-- We only have a few libc functions available to us (fflush, fgets, strcpy, puts).
+- ASLR is enabled;
+- the NX bit is enabled;
+- the calling convention puts the arguments on the stack;
+- only a few libc functions are available to us: `fflush`, `fgets`, `strcpy`,
+and `puts`).
 
 ## Strategy
-Since the arguments are on the stack, we can build our own fake stack frames to call functions. If we take a look at our functions we can see that we have puts, which can allow us to read arbitrary memory locations. And this is where the leaking part of this challenge is, we can leak libc function addresses by reading from the GOT with puts, and build on that. We can outline the following strategy :
+Since the arguments are on the stack, we can build our own fake stack frames to
+call functions. Considering the available functions, we can see that we can use
+`puts`, which will allow us to read arbitrary memory locations; and this is
+where the leaking part of this challenge lies: we can leak the addresses of
+libc functions by reading from the **GOT** with `puts`, and build on that.
+We can outline the following strategy :
 
-- Call puts(address of fgets) and leak fgets address
-- Compute libc base address (fgets leak - fgets in libc)
-- Compute system address
-- Compute "/bin/sh" address in libc
-- Return to _start
-- Call system("/bin/sh")
-- ???
-- Profit!
+1. call `puts(address of fgets)` and leak the address of `fgets`;
+2. compute the base address of the libc (*leaked fgets* - *fgets in libc*);
+3. compute the address of the `system` function;
+4. compute the address of **"/bin/sh"** in the libc;
+5. return to `_start`;
+6. call `system("/bin/sh")`;
+7. ???
+8. Profit!
 
-Note : Returning to _start allowed us to reset our stack to a sane state, and also allowed us to be able to exploit the program again without actually crashing it (and re-randomizing the addresses again)
+Note : returning to `_start` allows us to reset the stack to an uncorrupted
+state, and to exploit the program again without actually crashing it (and
+re-randomizing the addresses again).
 
-We can then just navigate to the ctfuser home directory and cat the flag !
+Then, we just have to navigate to the `ctfuser` home directory and read the
+flag!
 ```
 $ cat /home/ctfuser/flag
 SharifCTF{7af9dab81dff481772609b97492d6899}
@@ -183,4 +201,3 @@ p.sendline(stage2)
 # Remote shell
 p.interactive()
 ```
-
