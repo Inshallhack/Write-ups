@@ -305,9 +305,3 @@ Now we just have to upload the image to the website aaaand… Flagged!
 ## Conclusion
 
 Although the CTF mostly contained easy challenges, this one made me think a bit and I really enjoyed doing it! Will probably play this CTF again next year!
-
-
-
-
-
-
