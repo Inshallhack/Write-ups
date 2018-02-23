@@ -115,7 +115,6 @@ chr(2365 + ord('0')) + "5" + "5" + "2" + "3" + "9" + "1" = "७552391"
 ```
 
 Sending it to the online service, and… **Flagged!**
-we sended it to the online service and we received the flag.
 
 **Flag:** `easyctf{S0up_soup_soUP_sOuP_s0UP_S0up_s000000OOOOOOuuuuuuuuppPPppPPPp}`
 
