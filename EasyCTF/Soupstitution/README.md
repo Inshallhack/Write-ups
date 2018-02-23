@@ -92,7 +92,7 @@ out += ord('3') - ord('0') = 51 - 48 = 1723
 
 As we can see, we now have one more digit in our output! Success!
 
-#### Solving the problem
+### Solving the problem
 
 Remember that we want `parseInt` to output **2365552391** based on an input of
 at most 7 characters. The key here is that we can split **2365552391** in
