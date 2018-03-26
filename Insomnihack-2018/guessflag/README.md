@@ -24,7 +24,7 @@ First we look at the output of the file command.
 user1@insomniak:/home/flag$ file guessflag                                                                                                                      
 guessflag: setgid ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.32, not stripped
 ```
-It tell us that it is **compiled as a dynamic binary** , which means it rely on the libc of the remote server for standard functions like printf and that stuff. We could hook a standard function using  [LD_PRELOAD trick](https://www.goldsborough.me/c/low-level/kernel/2016/08/29/16-48-53-the_-ld_preload-_trick/) , but from my little experience , i known that **LD_PRELOAD is ignored when the binary is setuid or setgid**, which is the case here.
+It tell us that it is **compiled as a dynamic binary** , which means it rely on the libc of the remote server for standard functions like printf and that stuff. We could hook a standard function using  [LD_PRELOAD trick](https://www.goldsborough.me/c/low-level/kernel/2016/08/29/16-48-53-the_-ld_preload-_trick/) , but from our little experience , we known that **LD_PRELOAD is ignored when the binary is setuid or setgid**, which is the case here.
 
 So let's move on and look at ltrace's output.
 ```
