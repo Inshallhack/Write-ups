@@ -1,6 +1,6 @@
 # Guessflag
 
-Guessflag was a warmup pwn at **Insomnihack 2018**. It was a fairly easy challenge, but we struggled a lot on small details.
+Guessflag was a warmup pwn at **Insomni'hack 2018**. It was a fairly easy challenge, but we struggled a lot on small details.
 
 ## The challenge
 
