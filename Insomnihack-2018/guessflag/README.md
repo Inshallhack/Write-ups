@@ -37,18 +37,16 @@ It tells us that `guessflag` is **compiled as a dynamic binary**, which means th
 So let's move on and look at the output of `ltrace`.
 
 ```bash
-user1@insomniak:/home/flag$ ltrace ./guessflag                                                                                                                    
-puts("Can you guess the flag ?"Can you guess the flag ?
-)                                                                                        = 25
+user1@insomniak:/home/flag$ ltrace ./guessflag
+puts("Can you guess the flag ?"Can you guess the flag ?)                                                                = 25
 +++ exited (status 255) +++
 ```
 
 Nothing fancy here, let's try with an argument.
 
 ```bash
-user1@insomniak:/home/flag$ ltrace ./guessflag arg                                                                                                                   
-puts("Can you guess the flag ?"Can you guess the flag ?
-)                                                                                        = 25
+user1@insomniak:/home/flag$ ltrace ./guessflag arg
+puts("Can you guess the flag ?"Can you guess the flag ?)                                                                = 25
 getenv("CHECK_PATH")                                                                                                    = nil
 snprintf("(null)/dowin.so", 1024, "%s/dowin.so", nil)                                                                   = 15
 dlopen("(null)/dowin.so", 1)                                                                                            = 0
@@ -57,12 +55,11 @@ dlopen("(null)/dowin.so", 1)                                                    
 
 Uuh! Looks like it **first checks if we passed an argument, and if so, tries to get the content of the environment variable CHECK_PATH**.
 
-Let's try to set this variable : 
+Let's try to set this variable :
 
 ```bash
-user1@insomniak:/home/flag$ CHECK_PATH=test ltrace ./guessflag arg                                                                                                   
-puts("Can you guess the flag ?"Can you guess the flag ?
-)                                                                                        = 25
+user1@insomniak:/home/flag$ CHECK_PATH=test ltrace ./guessflag arg
+puts("Can you guess the flag ?"Can you guess the flag ?)                                                                = 25
 getenv("CHECK_PATH")                                                                                                    = "test"
 snprintf("test/dowin.so", 1024, "%s/dowin.so", "test")                                                                  = 13
 dlopen("test/dowin.so", 1)                                                                                              = 0
