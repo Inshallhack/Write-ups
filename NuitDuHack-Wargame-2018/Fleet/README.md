@@ -1,6 +1,6 @@
 # Fleet
 
-Fleet was a 300-point Stegano challenge at **Nuit Du Hack 2018**. Although its level was marked as "Easy", we (jeanmi151 and [SIben](https://twitter.com/_SIben_) got **first blood** on it near the end of the CTF, and no one else managed to flag it.
+Fleet was a 300-point Stegano challenge at **Nuit Du Hack 2018**. Although its level was marked as "Easy", we (jeanmi151 and [SIben](https://twitter.com/_SIben_)) got **first blood** on it near the end of the CTF, and no one else managed to flag it.
 We spent around 4-5 hours to solve all the step of this challenge.
 
 ## Challenge description
