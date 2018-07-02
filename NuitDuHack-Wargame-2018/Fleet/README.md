@@ -62,7 +62,7 @@ So we have a connection asking for a password. Now, what could it be? Our defaul
 
 We can assume that the password is hinted at in the second (*and last*) part of the announcement: `thb/g/6/19 -------------------`.
 
-### ~~Guessing~~
+### ~~Guessing~~ Googling
 So what does **THB** mean?
 
 By using our Google-Fu, we discover that **THB** is the **currency in Thailand** (*baht*). Another member of the team suggested that it is the **name of a Malagasy beer** called [Three Horse Beer](https://en.wikipedia.org/wiki/Three_Horses_Bee).
