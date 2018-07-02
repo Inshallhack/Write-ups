@@ -147,7 +147,7 @@ safe_path_hash = myhash.NDHash(safe_path_user)
 file_to_read_hash = myhash.NDHash(file_to_read)
 ```
 
-Let's comment out the sanitizing code:
+Let's add comments to the sanitizing code:
 
 ```python
 # Basically truncates a string to its first f_namemax characters, and checks that the resulting file exists
