@@ -9,7 +9,7 @@ We are provided with a file named **analysis.pcap**.
 
 ## Analyzing the pcap
 
-People who know me know that I'm always reluctant to open **wireshark**, because it's hellish to navigate using a mousepad on a and a smaller than 24″ screen. Therefore, I started the analysis using my favorite tool: **strings**.
+People who know me know that I'm always reluctant to open **wireshark**, because it's hellish to navigate using a mousepad on a and a smaller-than-24″ screen. Therefore, I started the analysis using my favorite tool: **strings**.
 
 ```bash
 ~$ strings analysis.pcap
