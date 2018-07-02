@@ -69,7 +69,7 @@ By using our Google-Fu, we discover that **THB** is the **currency in Thailand**
 
 Unfortunately, none of these options seem to work well with the rest of the hint (*and after checking with the organizers, they confirmed that we were wrong*).
 
-Using an [acronym finder](https://www.aclronymfinder.com/THB.html), we then stumble upon a more likely meaning: **The Holy Bible**. Bingpot! At this point, we understand that the **g** in the hint stands for **Genesis** and the **6** is the chapter.
+Using an [acronym finder](https://www.aclronymfinder.com/THB.html), we then stumble upon a more likely meaning: **The Holy Bible**. Bingpot! At this point, we understand that the **g** in the hint stands for **Genesis** and that **6** is the chapter.
 
 Using [our favorite mirror of the bible](https://www.lds.org/scriptures/ot/gen/6?lang=eng). The last number in the hint, **19**, could either be the number of the verse.
 
