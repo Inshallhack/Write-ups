@@ -172,6 +172,8 @@ S33 you 7h3r3...
 
 ## ~~Still guessing, but less so than before~~ Getting the flag
 
+First things first, the coordinates at the bottom are the same that are printed on the Nuit Du Hack neck strap and indicate the place where it's all happening. Meaning, it's useless.
+
 Having several lines each with a different amount of dots reeks of **baseX encoding**.
 Measuring the lines, we notice that the longest ones contain **29 characters**. That's more than 26, so we can assume that the base does not correspond to the alphabet.
 The closest usual base that can encompass 30 different characters is **base32**. Using that, we save the lines of dots to `lines.txt` and type the following few lines of python:
