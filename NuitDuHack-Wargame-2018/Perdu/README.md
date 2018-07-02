@@ -6,7 +6,7 @@
 
 # Writeup
 
-I didn't beat this challenge in time (Not enough sleep + too much beer + many a lot of nice people to meet = not a good mood to flag), but it was an interesting one so I came back on it  after the end of the event.
+I didn't beat this challenge in time (Not enough sleep + too much beer + a lot of nice people to meet = not a good mood to flag), but it was an interesting one so I came back on it  after the end of the event.
 
 From what we can learn from the description, the challenge is about data exifltration.
 
