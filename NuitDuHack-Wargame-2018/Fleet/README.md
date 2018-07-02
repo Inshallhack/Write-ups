@@ -75,7 +75,7 @@ Using [our favorite mirror of the bible](https://www.lds.org/scriptures/ot/gen/6
 
 > 19 And of every living thing of all flesh, two of every sort shalt thou bring into the ark, to keep them alive with thee; they shall be male and female.
 
-We tried a few words, but that didn't yield any result. So using the verse is not the right option, maybe we should use the 19<sup>th</sup> of the chapter.
+We tried a few words, but that didn't yield any result. So using the verse is not the right option, maybe we should use the 19<sup>th</sup> word of the chapter.
 
 > Chapter 6
 > 
