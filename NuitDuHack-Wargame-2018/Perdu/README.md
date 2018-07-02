@@ -6,6 +6,8 @@
 
 # Writeup
 
+I didn't beat this challenge in time (Not enough sleep + too much beer + many a lot of nice people to meet = not a good mood to flag), but it was an interesting one so I came back on it  after the end of the event.
+
 From what we can learn from the description, the challenge is about data exifltration.
 
 We were given a pcap. By opening it in wireshark, we can see a lot of http requests and responses to http://perdu.com.
@@ -15,11 +17,11 @@ I spent a lot of time trying to check if anything was hidden in http requests an
 After several unsuccessful leads, i noticed that the tcp ports used were all grouped in the range [4000-4200].
 By looking at the 3 last digits, you can guess that there is some ASCII behind.
 
-Here the oneliner i used to extract the data :
+Here is  a cool oneliner [SIben](https://twitter.com/_SIben_) and i made to extract the data :
 
 `tshark -r perdu.pcap -Y http.request -Tfields -e tcp.srcport |cut -c 2-4| awk '{ printf("%c", $0); }'`
 
-It looks for all http requests, take the first 3 digits of its tcp port, and print it as a ASCII char.
+It looks for all http requests, take the first 3 digits of its tcp port, and print it as an ASCII char.
 
 It output the following : 
 
@@ -105,7 +107,7 @@ Well done : ndh16_{e132697f156befd669df0726f06ab338f0a225da3267661cfa9bb720161b2
 ```
 
 Yay ! 
-Our flag is : `ndh16_{e132697f156befd669df0726f06ab338f0a225da3267661cfa9bb720161b2af9}`
+Our flag is `ndh16_{e132697f156befd669df0726f06ab338f0a225da3267661cfa9bb720161b2af9}`
 
 
 
