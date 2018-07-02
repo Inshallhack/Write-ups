@@ -19,7 +19,7 @@ Our second idea was to breakpoint at the second write syscall (result message) a
 When looking at the parameters in gdb we saw that rsi (buffer address) after the syscall was pointing at the fail string, but this one was not null terminated and there was a weird ascii string afterwards that we couldn't find in the executable itself.
 ![Screenshot weirdstring](img/weirdstring.jpg)
 
-To gather information we looked up the section containing the string and we dumped it. We ran strings on it and so a lot of ascii strings including fake flags. 
+To gather information we looked up the section containing the string and we dumped it. We ran strings on it and saw a lot of ascii strings including fake flags. 
 ![Screenshot strings](img/strings.jpg)
 
 After trying a few of them we were surprised to discover that our dump actually contained the flag.
