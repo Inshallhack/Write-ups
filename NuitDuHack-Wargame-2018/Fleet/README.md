@@ -21,7 +21,7 @@ Clicking on the link simply shows a blank page. We run some scans on the machine
 ~$ nmap -sS -sV fleet.wargame.rocks # TCP scan
 ~$ nmap -sU fleet.wargame.rocks # UDP scan
 ```
-and find that two ports are open: port **80** (*TCP scan*) and port 1337 (*UDP scan*).
+and find that two ports are open: port **80** (*TCP scan*) and port **1337** (*UDP scan*).
 
 Using curl to send a HEAD request to `fleet.wargame.rocks`, we end up with the following:
     
@@ -65,7 +65,7 @@ We can assume that the password is hinted at in the second (*and last*) part of 
 ### ~~Guessing~~
 So what does **THB** mean?
 
-By using our Google-Fu, we discover that **THB** is the **currency in Thailand** (*baht*). A guest of Inshall'hack for the CTF (*StormXploit*) suggested that it is the **name of a Malagasy beer** called [Three Horse Beer](https://en.wikipedia.org/wiki/Three_Horses_Bee).
+By using our Google-Fu, we discover that **THB** is the **currency in Thailand** (*baht*). Another member of the team suggested that it is the **name of a Malagasy beer** called [Three Horse Beer](https://en.wikipedia.org/wiki/Three_Horses_Bee).
 
 Unfortunately, none of these options seem to work well with the rest of the hint (*and after checking with the organizers, they confirmed that we were wrong*).
 
