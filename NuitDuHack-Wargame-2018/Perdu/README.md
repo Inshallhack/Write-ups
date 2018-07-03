@@ -124,5 +124,4 @@ Well done : ndh16_{e132697f156befd669df0726f06ab338f0a225da3267661cfa9bb720161b2
 
 Yay for the hacker manifesto, flagged!
 
-**Flag: ndh16_{e132697f156befd669df0726f06ab338f0a225da3267661cfa9bb720161b2af9}
-**
+**Flag: ndh16_{e132697f156befd669df0726f06ab338f0a225da3267661cfa9bb720161b2af9}**
