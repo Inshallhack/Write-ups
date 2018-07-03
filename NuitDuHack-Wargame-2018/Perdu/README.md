@@ -1,29 +1,45 @@
-# Perdu - NDH16
+# perdu
 
+perdu was a 100-point forensics challenge at **Nuit Du Hack 2018**. I personally
+didn't beat it in time, mainly due to a **lack of sleep, a high consumption of
+beer and the fact that socializing is much more amusing than flagging**.
 
-* **Category** : Forensic 
-* **Points** : 100
+Although someone else from our team ended up flagging it, I decided to solve it
+after the event ended and write it up myself.
 
-# Writeup
+# Challenge description
 
-I didn't beat this challenge in time (Not enough sleep + too much beer + a lot of nice people to meet = not a good mood to flag), but it was an interesting one so I came back on it  after the end of the event.
+Because we can't access the platform anymore, this challenge shall remain without description for now.
+The description mentions **data exfiltration**, and we are provided with a
+`.pcap` file.
 
-From what we can learn from the description, the challenge is about data exifltration.
+## Discovery
 
-We were given a pcap. By opening it in wireshark, we can see a lot of http requests and responses to http://perdu.com.
+Opening the `.pcap` in **wireshark**, we can observe a lot of HTTP exchanges
+with [http://perdu.com](http://perdu.com).
 
-I spent a lot of time trying to check if anything was hidden in http requests and responses, but there were nothing.
+I spent a lot of time trying to figure out whether anything was hidden in the
+requests, but I came up with nothing.
 
-After several unsuccessful leads, i noticed that the tcp ports used were all grouped in the range [4000-4200].
-By looking at the 3 last digits, you can guess that there is some ASCII behind.
+After following several inconclusive leads, I noticed that **all the TCP ports
+used in the communication were in the range [4000;4200]**.
 
-Here is  a cool oneliner [SIben](https://twitter.com/_SIben_) and i made to extract the data :
+## Extracting data
 
-`tshark -r perdu.pcap -Y http.request -Tfields -e tcp.srcport |cut -c 2-4| awk '{ printf("%c", $0); }'`
+Looking at the last 3 digits, it is natural to assume that the ports may be
+used to encode **ASCII characters**.
 
-It looks for all http requests, take the first 3 digits of its tcp port, and print it as an ASCII char.
+[SIben](https://twitter.com/_SIben_) and I came up with this cool oneliner
+to extract the data:
 
-It output the following : 
+```bash
+~$ tshark -r perdu.pcap -Y http.request -Tfields -e tcp.srcport | cut -c 2-4 | awk '{ printf("%c", $0); }'
+```
+
+It basically **retrieves all the ports used in the HTTP requests**, **subtract
+4000 to them** and **prints the result as an ASCII character**.
+
+The output is the following:
 
 ```
  
@@ -106,8 +122,7 @@ but you can't stop us all... after all, we're all alike.
 Well done : ndh16_{e132697f156befd669df0726f06ab338f0a225da3267661cfa9bb720161b2af9}
 ```
 
-Yay ! 
-Our flag is `ndh16_{e132697f156befd669df0726f06ab338f0a225da3267661cfa9bb720161b2af9}`
+Yay for the hacker manifesto, flagged!
 
-
-
+**Flag: ndh16_{e132697f156befd669df0726f06ab338f0a225da3267661cfa9bb720161b2af9}
+**
