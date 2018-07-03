@@ -12,7 +12,7 @@ Alas, the doors have shut on their secrets. Heed my words, those of the one who 
 
 Through the cold of the night, we arrived at the tavern. We knocked, and knocked, and knocked again, but the doors remained locked. As we were about to lose hope, a square eye appeared and words formed on the glass-like surface of the doors: **“Speak, friend, and enter”**.
 
-“That's impossible,” Alcoolocrevé muttered, an incredulous look on his face. “This door should not exist.”
+“That's impossible,” Fidèleacolyte muttered, an incredulous look on his face. “This door should not exist.”
 
 “Pray tell,” I said. “What do you know?”
 
@@ -28,7 +28,7 @@ I rummaged through the bag I had stolen from Gøøgle the old sorcerer the night
 
 “Gøøgle knew his way around the land. It says [here](http://lotr.wikia.com/wiki/Doors_of_Durin) that **mellon** is the right answer.” I said, pointing at the scroll “It's an old elvish riddle designed to fend off their stupidest enemies.”
 
-Alcoolocrevé groaned. “Elves… Then we definitely need to open these doors, and slay these filthy creatures.”
+Fidèleacolyte groaned. “Elves… Then we definitely need to open these doors, and slay these filthy creatures.”
 
 “Agreed,” I said “and apparently we also stole the old [QR Cøde speech translator](https://www.unitag.io/fr/qrcode) from Gøøgle's laboratory”
 
@@ -40,7 +40,7 @@ I played around with the settings of the translator.
 
 As soon as the eye took notice of the runes in front of it, a mechanism started turning within the door and the words on its surface changed.
 
-“Welcome **YuckyNoPrivilegeFriend**,” Alcoolocrevé deciphered painfully, “What does that mean?”
+“Welcome **YuckyNoPrivilegeFriend**,” Fidèleacolyte deciphered painfully, “What does that mean?”
 
 The mechanism had stopped turning.
 
