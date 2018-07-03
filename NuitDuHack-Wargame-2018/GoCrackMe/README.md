@@ -1,11 +1,17 @@
 # GoCrackMe
 
-- **Category:** crackme
-- **Points:** 400
+GoCrackMe was a 400-point challenge at **Nuit Du Hack 2018** on which we got first blood quite early in the CTF.
 
-# Writeup
-As the name of the challenge implies, this binary is a Go executable. After a quick static analysis we saw that the whole binary was stripped which made static analysis pretty difficult (we also had to consider all indirections used by the language itself).
-Using strace we can quickly guess how the binary works.
+## Challenge description
+
+Because we can't access the platform anymore, this challenge shall remain without description for now.
+
+## Write-up
+
+As the name of the challenge implies, this binary is a **Go executable**.
+After a quick static analysis, we found out that the whole binary is stripped, which makes pursuing such an analysis pretty difficult (*since we also have to consider all the indirections used by the language itself*).
+
+Using strace, we drew a rough sketch of how the binary works:
 
 ```
 (print message) -> (read user input) -> (check input) -> (print fail/win)
@@ -13,20 +19,29 @@ Using strace we can quickly guess how the binary works.
 
 ![Screenshot strace](img/strace.jpg)
 
-Since the code base is huge (thanks Go) we needed a way to pinpoint the exact functions processing our input. We first tried to breakpoint at the read syscall loading our flag in memory and then checking were this would take us. Unfortunately the abstraction of Go prevented us from discovering anything interesting as we quickly got lost in the numerous calls to other functions.
-Our second idea was to breakpoint at the second write syscall (result message) and go up the call stack until the flag verification function. This turned out to be the right idea but not in the way we expected. 
+Since the **codebase is huge** (*thanks Go*), we needed to find a way to **pinpoint the exact functions processing our input**.
 
-When looking at the parameters in gdb we saw that rsi (buffer address) after the syscall was pointing at the fail string, but this one was not null terminated and there was a weird ascii string afterwards that we couldn't find in the executable itself.
+We first tried to **break on the read syscall loading our flag in memory** so as to then check where this would take us.
+Unfortunately, because of the code abstraction in Go, we were prevented from discovering anything interesting (*as we quickly got lost in the numerous calls to other functions*).
+
+Our second idea was to **break on the second write syscall** (*writing the fail/win message*) and then **go up the call stack until we hit the flag verification function**; this turned out to be the right idea, but not in the way we expected.
+
+Observing the parameters in gdb led us to see that **rsi** (*buffer address*) pointed to the failure string after the syscall; however, this string was **not null-terminated** and **followed by a weird ascii string that we couldn't find anywhere in the executable itself**.
+
 ![Screenshot weirdstring](img/weirdstring.jpg)
 
-To gather information we looked up the section containing the string and we dumped it. We ran strings on it and saw a lot of ascii strings including fake flags. 
+To gather more information, we looked up the section containing the string and dumped it. Running our favorite command `strings` on it, we discovered a lot of different strings as well as **fake flags**.
+
 ![Screenshot strings](img/strings.jpg)
 
-After trying a few of them we were surprised to discover that our dump actually contained the flag.
+After trying a few of them, we were surprised to discover that this dump **actually contained the flag**.
+
 ![Screenshot flagged](img/flag.jpg)
 
-challenge password : This1sATotalLyDumbPa5$wordBut1tW0rkN3h
-challenge flag : ndh16\_2c51459d50d04a8705493d2ab9696e21f17ddd62ebbe106dbbca8a18a867c82f9ea1c84319035b95cbc64303dbf26172c67adac64a45f48854c272cbc2608957
+**Challenge password: This1sATotalLyDumbPa5$wordBut1tW0rkN3h**
 
-# Note
-Sometimes running **strings** on random binary blobs yields surprising results.
+**Challenge flag: ndh16_2c51459d50d04a8705493d2ab9696e21f17ddd62ebbe106dbbca8a18a867c82f9ea1c84319035b95cbc64303dbf26172c67adac64a45f48854c272cbc2608957**
+
+# Wrapping up
+
+We already knew `strings` was awesome, and running it on random binary blobs sure can yield unexpected results!
