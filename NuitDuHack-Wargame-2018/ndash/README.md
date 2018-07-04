@@ -168,7 +168,7 @@ So, it seems we're left with two options to get the flag:
 1. find the hashing function source and **create a hash collision between the file we want to request and the sanitized path**;
 2. work from what we have and **exploit the sanitizing function**.
 
-We decided to go with **2**, because `check_is_safe` is doing something very wrong: it does not return the sanitized path after checking it. This means that as long as we're able to modify our path in a meaningful way after the first `f_namemax` characters and to pad it correctly so that the first `f_namemax` characters correspond to a path semantically equal to `./hello_world.txt`. **Path truncation + directory traversal**, it is!
+We decided to go with **2**, because `check_is_safe` is doing something very wrong: it does not return the sanitized path after checking it. This means that as long as we're able to modify our path in a meaningful way after the first `f_namemax` characters and to pad it correctly so that the first `f_namemax` characters correspond to a path semantically equal to `./hello_world.txt`, we can pretty much pass any path we want. **Path truncation + directory traversal**, it is!
 
 If we set both variables to this path, we'll be able to **pass the sanitizing function** as well as the subsequent condition, as we'll be **comparing the hash of a string with itself**.
 
