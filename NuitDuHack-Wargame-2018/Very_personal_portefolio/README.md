@@ -58,7 +58,7 @@ aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g / ierg457srg76fgyg
 aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g / francois
 ```
 
-but nothing seems to work… until we figure out that François is so bad at sending commands, that he sometimes writes `-password` instead of `--password`, which is like passing the password **assword** to the command.
+but nothing seems to work… until we figure out that François is so bad at typing commands, that he sometimes writes `-password` instead of `--password`, which is like passing the password **assword** to the command.
 
 With this in mind, we try some more and figure out the correct credentials:
 
