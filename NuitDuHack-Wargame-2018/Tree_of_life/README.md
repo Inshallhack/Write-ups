@@ -103,11 +103,11 @@ Gotcha! Converting **2018-06-07 15:08:20.680000** to a Unix time stamp, we get: 
 
 We use this to generate a QR Code containing the following link: `otpauth://totp/treeoflife.hzv-ep.sybix.fr:arbre?secret=GE2TEOBTHA2DCMBQ&amp;issuer=treeoflife.hzv-ep.sybix.fr`:
 
-![Admin 2FA QR Code](frame.png)
+![Admin 2FA QR Code](images/frame.png)
 
 We scan it using **Google Authenticator**, input the token it generates on the **secret** page and…
 
-![Flag](flag.png)
+![Flag](images/flag.png)
 
 **Flagged!**
 
